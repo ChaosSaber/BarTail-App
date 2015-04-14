@@ -12,7 +12,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="60dp"
-        android:text="Login"
+        android:text="Logiiin"
         android:textSize="20dp"
         android:layout_above="@+id/but_reg"
         android:layout_alignLeft="@+id/but_reg"
