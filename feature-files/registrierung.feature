@@ -2,51 +2,33 @@ Feature: Nutzer registriert sich
 	Neue Nutzer müssen sich registrieren um die Anwendung zu nutzen
 	
 	Scenario: Nutzer gibt richtige Anmeldeinformationen ein und diese existieren noch nicht im System
-		Given Nutzer möchte sich registrieren
-		When Nutzer gibt "Nutzername" ein
-		And Nutzer gibt "E-Mail" ein
-		And Nutzer gibt "Passwort" ein
-		And Nutzer gibt "Passwortwiederholung" ein
-		Then Eine Nachricht erscheint "Registrierung erfolgreich"
-		And Nutzer wird zur Login-Seite weitergeleitet
+		Given Nutzer ist in activity RegisterActivity.java
+		When Nutzer gibt "Susi" ein
+		And Nutzer gibt "Susi@gmx.com" ein
+		And Nutzer gibt "pa55wort" ein
+		And Nutzer gibt "pa55wort" ein
+		And Nutzer drückt den Button "Registrieren"
+		Then Textview Ausgabe zeigt "Registrierung erfolgreich"
+		And aktuelle Activity ist LoginActivity.java
 
-	Scenario: Nutzername existiert bereits
-		Given Nutzer möchte sich registrieren
-		When Nutzer gibt "Nutzername" ein
-		And Nutzer gibt "E-Mail" ein
-		And Nutzer gibt "Passwort" ein
-		And Nutzer gibt "Passwortwiederholung" ein
-		And Nutzer drückt den "Registrieren Button"
-		Then Eine Nachricht erscheint "Nutzername ist bereits vergeben"
-		And Nutzer wird gebeten die Daten neu einzugeben
-		
-	Scenario: E-Mail ist bereits registriert
-		Given Nutzer möchte sich registrieren
-		When Nutzer gibt "Nutzername" ein
-		And Nutzer gibt "E-Mail" ein
-		And Nutzer gibt "Passwort" ein
-		And Nutzer gibt "Passwortwiederholung" ein
-		And Nutzer drückt den "Registrieren Button"
-		Then Eine Nachricht erscheint "E-Mail Adresse wird bereits verwendet"
-		And Nutzer wird gefragt ob er sich anmelden möchte oder die Registrierung erneut versuchen möchte
+	Scenario: Email existiert bereits
+		Given Nutzer ist in activity RegisterActivity.java
+		When Nutzer gibt "Sus" ein
+		And Nutzer gibt "sus@gmx.com" ein
+		And Nutzer gibt "pa55wort" ein
+		And Nutzer gibt "pa55wort" ein
+		And Nutzer drückt den Button "Registrieren"
+		Then Textview Ausgabe zeigt "Diese E-Mail adresse ist bereits registriert"
+		And aktuelle Activity ist RegisterActivity
 	
 	Scenario: Passwortwiederholung falsch
-		Given Nutzer möchte sich registrieren
-		When Nutzer gibt "Nutzername" ein
-		And Nutzer gibt "E-Mail" ein
-		And Nutzer gibt "Passwort" ein
-		And Nutzer gibt "Passwortwiederholung" ein
-		And Nutzer drückt den "Registrieren Button"
-		Then Eine Nachricht erscheint "Passwortwiederholung falsch"
-		And Nutzer wird gebeten die Daten erneut einzugeben
-		
-	Scenario: Passwort enspricht nicht den Kriterien
-		Given Nutzer möchte sich registrieren
-		When Nutzer gibt "Nutzername" ein
-		And Nutzer gibt "E-Mail" ein
-		And Nutzer gibt "Passwort" ein
-		And Nutzer gibt "Passwortwiederholung" ein
-		And Nutzer drückt den "Registrieren Button"
-		Then Eine Nachricht erscheint "Passwort entspricht nicht den Kriterien. Passwort muss zwischen 6 und 20 Zeichen lang sein und mindestens jeweils einen Klein-/Großbuchstaben und eine Zahl enthalten"
-		And Nutzer wird gebeten die Daten erneut einzugeben
+		Given Nutzer ist in activity RegisterActivity.java
+		When Nutzer gibt "Susi" ein
+		And Nutzer gibt "susi@gmx.de" ein
+		And Nutzer gibt "Pa55wort" ein
+		And Nutzer gibt "pa55wort" ein
+		And Nutzer drückt den Button "Registrieren"
+		Then Textview Ausgabe zeigt "Die Passwortwiederhohlung ist falsch"
+		And aktuelle Activity ist RegisterActivity
+
 		
