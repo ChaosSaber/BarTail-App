@@ -2,42 +2,37 @@ Feature: Neue Bar hinzufügen
   Nutzer fügt der Datenbank eine neue Bar hinzu
   
   Scenario: Nutzer gibt Daten korrekt ein
-    Given: Nutzer ist in der Bar-hinzufügen-Ebene
-    When: Nutzer gibt "Name" ein
-    And: Nutzer gibt "Adresse" ein
-    And: Nutzer gibt "Ort" ein
-    And: Nutzer gibt "PLZ" ein
-    And: Nutzer gibt "Musikstil" ein
-    And: Nutzer gibt "Website" ein
-    And: Nutzer lädt "Bild" hoch
-    And: Nutzer gibt "Öffnunszeiten" ein
-    And: drückt Button "Bar eintragen"
-    Then: Bar wird an Datenbank übermittelt
-    And: Nacricht "Bar wurde erfolgreich eingetragen" angezeigt
-    And: Weiterleitung zur Startseite
+    Given: Nutzer ist in der Activity AddbarActivity
+    When: Nutzer gibt "neue Bar" ein
+    And: Nutzer gibt "Kaiserstraße 6" ein
+    And: Nutzer gibt "Karlsruhe" ein
+    And: Nutzer gibt "76166" ein
+    And: Nutzer gibt "Jazz" ein
+    And: Nutzer gibt "Eine Bar mi Jazzmusik" ein
+    And: drückt Button "Addbar"
+    Then: Textview ausgabe zeigt "Bar hinzugefügt"
+    And: aktuelle Activity ist AddbarActivity
   
   Scenario: Name vergessen
-    Given: Nutzer ist in der Bar-hinzufügen-Ebene
-    When: Nutzer gibt keinen "Name" ein
-    And: Nutzer gibt "Adresse" ein
-    And: Nutzer gibt "Ort" ein
-    And: Nutzer gibt "PLZ" ein
-    And: Nutzer gibt "Musikstil" ein
-    And: Nutzer gibt "Website" ein
-    And: Nutzer lädt "Bild" hoch
-    And: Nutzer gibt "Öffnunszeiten" ein
-    And: drückt Button "Bar eintragen"
-    Then: Error "Bitte Name eintragen"
+    Given: Nutzer ist in der Activity AddbarActivity
+    When: Nutzer gibt "" ein
+    And: Nutzer gibt "Kaiserstraße 6" ein
+    And: Nutzer gibt "Karlsruhe" ein
+    And: Nutzer gibt "76166" ein
+    And: Nutzer gibt "Jazz" ein
+    And: Nutzer gibt "Eine Bar mi Jazzmusik" ein
+    And: drückt Button "Addbar"
+    Then: Textview ausgabe zeigt "Bitte geben sie einen Namen ein"
+    And: aktuelle Activity ist AddbarActivity
     
   Scenario: Adresse nicht eingetragen
-    Given: Nutzer ist in der Bar-hinzufügen-Ebene
-    When: Nutzer gibt "Name" ein
-    And: Nutzer gibt keine "Adresse" ein
-    And: Nutzer gibt keine "Ort" ein
-    And: Nutzer gibt keine "PLZ" ein
-    And: Nutzer gibt "Musikstil" ein
-    And: Nutzer gibt "Website" ein
-    And: Nutzer lädt "Bild" hoch
-    And: Nutzer gibt "Öffnunszeiten" ein
-    And: drückt Button "Bar eintragen"
-    Then: Error "Gib eine volständige Adresse ein"
+    Given: Nutzer ist in der Activity AddbarActivity
+    When: Nutzer gibt "neue Bar" ein
+    And: Nutzer gibt "" ein
+    And: Nutzer gibt "Karlsruhe" ein
+    And: Nutzer gibt "76166" ein
+    And: Nutzer gibt "Jazz" ein
+    And: Nutzer gibt "Eine Bar mi Jazzmusik" ein
+    And: drückt Button "Addbar"
+    Then: Textview ausgabe zeigt "Bitte geben sie eine Adresse ein"
+    And: aktuelle Activity ist AddbarActivity
